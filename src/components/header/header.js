@@ -14,13 +14,13 @@ const Header = () => (
     {/* <div className="header-line">
       <hr/>
     </div> */}
-    <div className="nav-bar" activeClassName="active-nav-bar">
-      <nl>
+    <div className="nav-bar">
+      <ul>
         <li><Link activeStyle={{color:"#333333"}} to="/">Home</Link></li>
         <li><Link activeStyle={{color:"#333333"}} to="/about/">About</Link></li>
         <li><Link activeStyle={{color:"#333333"}} to="/blog/">Blog</Link></li>
         <li><Link activeStyle={{color:"#333333"}} to="/contact/">Contact</Link></li>
-      </nl>
+      </ul>
     </div>
   </header>
 )

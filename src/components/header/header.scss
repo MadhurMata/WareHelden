@@ -16,9 +16,10 @@
 }
 
 .nav-bar {
-  nl{
-    display: flex;
-    justify-content: center;
+  li{
+    margin-right: 0.8rem;
+    margin-left: 0.8rem;
+    list-style: none;
   }
   a {
     color: #999999;
