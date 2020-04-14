@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import Truncate from 'react-truncate';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
@@ -62,25 +63,34 @@ const ReadingTime = styled.h4`
   color: gray;
 `
 
-const Excerpt = styled.p`
-  margin: 0 1rem 1rem 1rem;
-  line-height: 1.6;
-`
+// const Excerpt = styled.p`
+//   margin: 0 1rem 1rem 1rem;
+//   line-height: 1.6;
+// `
 
-const Card = ({ slug, image, title, publicationDate, body, ...props }) => {
+const Card = ({ slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
+  console.log(props);
+  image = image ? image.fluid : ""
   return (
     <>
-      {image && body && (
+      {image && mainText && truncateOptions && (
         <Post featured={props.featured}>
           <Link to={`${props.basePath}/${slug}/`}>
-            {/* <StyledImg fluid={image.fluid} backgroundColor={'#eeeeee'} /> */}
+            <StyledImg 
+              fluid={image}
+              backgroundColor={'#eeeeee'} />
             <Title>{title}</Title>
             <Date>{publicationDate}</Date>
             <ReadingTime>
-              {documentToReactComponents(body.json)} min read
+              <Truncate
+                lines={truncateOptions.lines}
+                width={truncateOptions.width} // width being how much you want to truncate your copy
+                ellipsis='&hellip;'
+              >
+                {documentToReactComponents(mainText.json)}
+              </Truncate>
             </ReadingTime>
-            <Excerpt/>
-          </Link>
+            </Link>
         </Post>
       )}
     </>

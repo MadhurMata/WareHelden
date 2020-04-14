@@ -1,12 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout.js'
 import Hero from '../components/Hero'
 import Container from '../components/Container'
 import PageBody from '../components/PageBody'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
-import SEO from '../components/SEO'
+
+//import SEO from '../components/SEO'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -15,11 +16,14 @@ const PostTemplate = ({ data, pageContext }) => {
     image,
     body,
     publicationDate,
+    markdownRemark,
+    file
   } = data.contentfulPost
   console.log(metaDescription);
   console.log(image);
   console.log(body);
-
+  console.log(file);
+  console.log(markdownRemark);
   const previous = pageContext.prev
   const next = pageContext.next
   const { basePath } = pageContext
@@ -32,7 +36,7 @@ const PostTemplate = ({ data, pageContext }) => {
   }
   return (
     <Layout>
-      <SEO
+      {/* <SEO
         title={title}
         description={
           metaDescription
@@ -40,13 +44,13 @@ const PostTemplate = ({ data, pageContext }) => {
             : body.childMarkdownRemark.excerpt
         }
        image={ogImage}
-      />
+      /> */}
      
       <Hero title={title} image={image} height={'50vh'} />
       <Container>
         <PostDetails
           date={publicationDate}
-          timeToRead={body.childMarkdownRemark.timeToRead}
+         // timeToRead={body.childMarkdownRemark.timeToRead}
         />
         <PageBody body={body} />
       </Container>
@@ -56,25 +60,24 @@ const PostTemplate = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
-      slug
-      title
-      publicationDate
-      image {
-        fluid(quality: 90, maxWidth: 300) {
-          src
-        }
-      }
-      body {
-        json
-      }
-      linkAuthorImage {
-        json
+query($slug: String!) {
+  contentfulPost(slug: { eq: $slug }) {
+    slug
+    title
+    publicationDate
+    image {
+      fluid(quality: 90, maxWidth: 300) {
+        src
       }
     }
+    mainText {
+      json
+    }
+    linkAuthorImage {
+      json
+    }
   }
+}
 `
-console.log(query);
 
 export default PostTemplate

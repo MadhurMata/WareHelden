@@ -5,16 +5,12 @@ const { paginate } = require(`gatsby-awesome-pagination`)
 
 module.exports = async ({ graphql, actions }) => {
   const { createPage } = actions
-  console.log("@@@@@@@@@@@@@@@@@@@@@@");
   const basePath = config.siteMetadata.basePath || '/'
-  console.log("@@@@@@@@@@@@@@@@@@@@@@");
 
   // Create a page for each "post"
   const postsQuery = await graphql(query.data.posts)
-  console.log("@@@@@@@@@@@@@@@@@@@@@@");
 
   const posts = postsQuery.data.allContentfulPost.edges
-  console.log("@@@@@@@@@@@@@@@@@@@@@@");
 
   posts.forEach((post, i) => {
     const next = i === posts.length - 1 ? null : posts[i + 1].node
@@ -31,7 +27,6 @@ module.exports = async ({ graphql, actions }) => {
       },
     })
   })
-  console.log("@@@@@@@@@@@@@@@@@@@@@@");
 
   // Create a page containing all "posts" and paginate.
   paginate({

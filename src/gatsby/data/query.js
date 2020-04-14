@@ -5,17 +5,6 @@ module.exports.data = {
         node {
           slug
           title
-          image {
-            fluid(quality: 90, maxWidth: 300) {
-              src
-            }
-          }
-          body {
-            json
-          }
-          linkAuthorImage {
-            json
-          }
           publicationDate(formatString: "MMMM DD, YYYY")
         }
       }
