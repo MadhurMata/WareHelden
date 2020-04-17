@@ -69,11 +69,12 @@ const ReadingTime = styled.h4`
 // `
 
 const Card = ({ slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
-  console.log(props);
   image = image ? image.fluid : ""
+  console.log(image, title, mainText);
+
   return (
     <>
-      {image && mainText && truncateOptions && (
+      {image && mainText && truncateOptions && title && mainText && (
         <Post featured={props.featured}>
           <Link to={`${props.basePath}/${slug}/`}>
             <StyledImg 

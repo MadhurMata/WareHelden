@@ -72,6 +72,8 @@ const Select = styled.select`
 `
 
 const Pagination = props => {
+  console.log("ghsbdjxsnzmxks", e.target.value);
+
   console.log(props);
   function changePage(e) {
     navigate(

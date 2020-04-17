@@ -9,6 +9,7 @@ import SEO from '../components/SEO'
 import { startCase } from 'lodash'
 
 const Posts = ({ data, pageContext }) => {
+  console.log(pageContext);
   const posts = data.allContentfulPost.edges
   const { humanPageNumber, basePath } = pageContext
   const isFirstPage = humanPageNumber === 1
