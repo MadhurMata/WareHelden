@@ -5,8 +5,8 @@ module.exports = {
     author: `@gatsbyjs`,
     siteUrl: 'https://gcn.netlify.com',
     image: '/images/share.jpg',
-    postsPerFirstPage: 7,
-    postsPerPage: 6,
+    postsPerFirstPage: 4,
+    postsPerPage: 3,
     basePath: '/',
   },
   plugins: [
