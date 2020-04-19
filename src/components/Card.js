@@ -68,21 +68,21 @@ const ReadingTime = styled.h4`
 //   line-height: 1.6;
 // `
 
-const Card = ({ slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
-  image = image ? image.fluid : ""
-  console.log(image, title, mainText);
-
+const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
+  image = image ? image.fluid : defaultImage.fluid
+  title = title ? title : " "
   return (
     <>
       {image && mainText && truncateOptions && title && mainText && (
         <Post featured={props.featured}>
           <Link to={`${props.basePath}/${slug}/`}>
             <StyledImg 
+              key={slug}
               fluid={image}
               backgroundColor={'#eeeeee'} />
             <Title>{title}</Title>
             <Date>{publicationDate}</Date>
-            <ReadingTime>
+            {/* <ReadingTime>
               <Truncate
                 lines={truncateOptions.lines}
                 width={truncateOptions.width} // width being how much you want to truncate your copy
@@ -90,7 +90,7 @@ const Card = ({ slug, image, title, truncateOptions, publicationDate, mainText, 
               >
                 {documentToReactComponents(mainText.json)}
               </Truncate>
-            </ReadingTime>
+            </ReadingTime> */}
             </Link>
         </Post>
       )}

@@ -74,6 +74,7 @@ const Select = styled.select`
 const Pagination = props => {
   
   console.log(props);
+
   function changePage(e) {
     console.log("ghsbdjxsnzmxks", e.target.value);
     navigate(
@@ -103,7 +104,8 @@ const Pagination = props => {
                 </option>
               ))}
             </Select>
-            / {props.context.numberOfPages} <SelectIcon />
+            / {props.context.numberOfPages} 
+            <SelectIcon />
           </Numbers>
           <div>
             {props.context.previousPagePath && (

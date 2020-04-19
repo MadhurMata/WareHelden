@@ -9,10 +9,16 @@ import SEO from '../components/SEO'
 import { startCase } from 'lodash'
 
 const Posts = ({ data, pageContext }) => {
-  console.log(pageContext);
   const posts = data.allContentfulPost.edges
   const { humanPageNumber, basePath } = pageContext
   const isFirstPage = humanPageNumber === 1
+  const defaultImage = data.allContentfulDefaultImage.edges[0].node.image
+
+  console.log(defaultImage)
+
+
+console.log(posts)
+
   let featuredPost
   let ogImage
   const truncateOptions = {
@@ -32,9 +38,9 @@ const Posts = ({ data, pageContext }) => {
     featuredPost = null
   }
   try {
-    ogImage = posts[0].node.image.fluid.src
+    ogImage = posts[0].node.image.fluid.src 
   } catch (error) {
-    ogImage = null
+    ogImage = defaultImage.fluid.src 
   }
 
   return (
@@ -43,15 +49,15 @@ const Posts = ({ data, pageContext }) => {
       <Container>
         {isFirstPage ? (
           <CardList>
-            <Card {...featuredPost} truncateOptions={truncateOptions.hero} featured basePath={basePath} />
+            <Card defaultImage={defaultImage} {...featuredPost} truncateOptions={truncateOptions.hero} featured basePath={basePath} />
             {posts.slice(1).map(({ node: post }, key) => (
-              <Card key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
+              <Card defaultImage={defaultImage} key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
             ))}
           </CardList>
         ) : (
           <CardList>
             {posts.map(({ node: post }, key) => (
-              <Card key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
+              <Card defaultImage={defaultImage} key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
             ))}
           </CardList>
         )}
@@ -62,16 +68,20 @@ const Posts = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-query {
-  allContentfulPost(sort: { fields: [publicationDate], order: DESC }) {
-    edges {
+query($skip: Int!, $limit: Int!) {
+  allContentfulPost(
+    sort: { fields: [publicationDate], order: DESC }
+    limit: $limit
+    skip: $skip
+    ) {
+      edges {
       node {
         slug
         title
         publicationDate(formatString: "MMMM DD, YYYY")
         image {
-          fluid(quality: 90, maxWidth: 300) {
-            src
+          fluid(maxWidth: 1800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         mainText {
@@ -83,6 +93,18 @@ query {
       }
     }
   }
+  allContentfulDefaultImage {
+    edges {
+      node {
+        image {
+          fluid(maxWidth: 1800) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+            src
+          }
+        }
+      }     
+    }
+  }  
 }
 `
 

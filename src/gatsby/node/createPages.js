@@ -5,6 +5,9 @@ const { paginate } = require(`gatsby-awesome-pagination`)
 
 module.exports = async ({ graphql, actions }) => {
   const { createPage } = actions
+
+  console.log("config.siteMetadata.basePath", config.siteMetadata.basePath)
+
   const basePath = config.siteMetadata.basePath || '/'
 
   // Create a page for each "post"
@@ -12,9 +15,16 @@ module.exports = async ({ graphql, actions }) => {
 
   const posts = postsQuery.data.allContentfulPost.edges
 
+  console.log("posts", posts)
+
   posts.forEach((post, i) => {
     const next = i === posts.length - 1 ? null : posts[i + 1].node
     const prev = i === 0 ? null : posts[i - 1].node
+
+    console.log(post, post.node.slug, )
+
+    console.log("next", next, "prev", prev)
+
 
     createPage({
       path: `${basePath === '/' ? '' : basePath}/${post.node.slug}/`,
@@ -33,7 +43,7 @@ module.exports = async ({ graphql, actions }) => {
     createPage,
     component: path.resolve(`./src/templates/posts.js`),
     items: posts,
-    itemsPerFirstPage: config.siteMetadata.postsPerFirstPage || 4,
+    itemsPerFirstPage: config.siteMetadata.postsPerFirstPage || 7,
     itemsPerPage: config.siteMetadata.postsPerPage || 6,
     pathPrefix: basePath,
     context: {

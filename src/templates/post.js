@@ -12,21 +12,28 @@ import PostDetails from '../components/PostDetails'
 const PostTemplate = ({ data, pageContext }) => {
   const {
     title,
-    metaDescription,
+    slug,
     image,
-    body,
+    mainText,
     publicationDate,
-    markdownRemark,
-    file
-  } = data.contentfulPost
-  console.log(metaDescription);
-  console.log(image);
-  console.log(body);
-  console.log(file);
-  console.log(markdownRemark);
+    linkAuthorImage,
+  } = data.contentfulPost;
+
+  const defaultImage = data.contentfulDefaultImage.image
+
+  // console.log(slug, "slug");
+  // console.log(image);
+  // console.log(mainText, "main text");
+  // console.log(pageContext, " page context");
+  // console.log(linkAuthorImage, " linkAuthorImage");
+  // console.log("base pathhhhhhhhhhhh", basePath)
+
   const previous = pageContext.prev
   const next = pageContext.next
   const { basePath } = pageContext
+
+   image = image ? image : defaultImage
+
 
   let ogImage
   try {
@@ -52,7 +59,7 @@ const PostTemplate = ({ data, pageContext }) => {
           date={publicationDate}
          // timeToRead={body.childMarkdownRemark.timeToRead}
         />
-        <PageBody body={body} />
+        <PageBody body={mainText} />
       </Container>
       <PostLinks previous={previous} next={next} basePath={basePath} />
     </Layout>
@@ -66,8 +73,8 @@ query($slug: String!) {
     title
     publicationDate
     image {
-      fluid(quality: 90, maxWidth: 300) {
-        src
+      fluid(maxWidth: 1800) {
+        ...GatsbyContentfulFluid_withWebp_noBase64
       }
     }
     mainText {
@@ -77,6 +84,14 @@ query($slug: String!) {
       json
     }
   }
+  contentfulDefaultImage {
+    image {
+      fluid(maxWidth: 1800) {
+        ...GatsbyContentfulFluid_withWebp_noBase64
+        src
+      }
+    }
+  }        
 }
 `
 
