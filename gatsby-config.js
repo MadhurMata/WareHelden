@@ -13,23 +13,23 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: "5q1jvtkyacbn",
+        accessToken: "l8Wc9yapVmnoMoBCbeC9ymenEVHWIv3x217PUPkBy6s",
       },
     },
     `gatsby-plugin-emotion`,
     'gatsby-plugin-theme-ui',
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -39,7 +39,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/icons/facebook.svg`, // This path is relative to the root of the site.
       },
     },
     `gatsby-transformer-remark`,

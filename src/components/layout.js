@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Global } from '@emotion/core'
 
-import Header from "./header/header"
+import Header from "./header"
 import Footer from './footer/footer'
 
 import "./layout.css"

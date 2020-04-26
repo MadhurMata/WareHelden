@@ -67,8 +67,10 @@ const ReadingTime = styled.h4`
 //   margin: 0 1rem 1rem 1rem;
 //   line-height: 1.6;
 // `
+  // display: ${props => props.display};
 
 const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
+  //const display = image ? "content" : "none"
   image = image ? image.fluid : defaultImage.fluid
   title = title ? title : " "
   return (
@@ -76,7 +78,8 @@ const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDa
       {image && mainText && truncateOptions && title && mainText && (
         <Post featured={props.featured}>
           <Link to={`${props.basePath}/${slug}/`}>
-            <StyledImg 
+            <StyledImg
+              //display={display}
               key={slug}
               fluid={image}
               backgroundColor={'#eeeeee'} />
