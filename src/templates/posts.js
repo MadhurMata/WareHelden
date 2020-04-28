@@ -14,11 +14,6 @@ const Posts = ({ data, pageContext }) => {
   const isFirstPage = humanPageNumber === 1
   const defaultImage = data.allContentfulDefaultImage.edges[0].node.image
 
-  console.log(defaultImage)
-
-
-console.log(posts)
-
   let featuredPost
   let ogImage
   const truncateOptions = {

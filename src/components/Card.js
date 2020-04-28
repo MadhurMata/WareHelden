@@ -6,7 +6,6 @@ import Truncate from 'react-truncate';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
-
 const Post = styled.li`
   position: relative;
   border: 1px solid ${props => props.theme.colors.secondary};
@@ -60,15 +59,9 @@ const Date = styled.h3`
 
 const ReadingTime = styled.h4`
   margin: 0 1rem 1.5rem 1rem;
+  padding-bottom: 1rem;
   color: gray;
 `
-
-// const Excerpt = styled.p`
-//   margin: 0 1rem 1rem 1rem;
-//   line-height: 1.6;
-// `
-  // display: ${props => props.display};
-
 const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
   //const display = image ? "content" : "none"
   image = image ? image.fluid : defaultImage.fluid
@@ -85,15 +78,15 @@ const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDa
               backgroundColor={'#eeeeee'} />
             <Title>{title}</Title>
             <Date>{publicationDate}</Date>
-            {/* <ReadingTime>
+            <ReadingTime>
               <Truncate
                 lines={truncateOptions.lines}
                 width={truncateOptions.width} // width being how much you want to truncate your copy
                 ellipsis='&hellip;'
               >
-                {documentToReactComponents(mainText.json)}
+                  {documentToReactComponents(mainText.json)}
               </Truncate>
-            </ReadingTime> */}
+            </ReadingTime>
             </Link>
         </Post>
       )}

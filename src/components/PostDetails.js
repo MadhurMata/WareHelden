@@ -18,11 +18,10 @@ const ReadingTime = styled.p`
 `
 
 const PostDetails = props => {
+  console.log(props)
   return (
     <Wrapper>
       <Date>📅 {props.date}</Date>
-      <span>•</span>
-      <ReadingTime>{`⏱️${props.timeToRead} min read `}</ReadingTime>
     </Wrapper>
   )
 }

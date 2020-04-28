@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Global } from '@emotion/core'
 
 import Header from "./header"
-import Footer from './footer/footer'
+//import Footer from './footer/footer'
 
 import "./layout.css"
 import { globalStyles } from '../styles/globalStyles'
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
     >
       <Header/>
       <main>{children}</main>
-      <Footer/>
+      {/* <Footer/> */}
       <Global styles={globalStyles} />
     </div>
   )

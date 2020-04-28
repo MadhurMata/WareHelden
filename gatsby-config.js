@@ -5,7 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
     siteUrl: 'https://gcn.netlify.com',
     image: '/images/share.jpg',
-    postsPerFirstPage: 7,
+    postsPerFirstPage: 4,
     postsPerPage: 6,
     basePath: '/',
   },
@@ -39,7 +39,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/icons/facebook.svg`, // This path is relative to the root of the site.
+        //icon: `src/icons/facebook.svg`, // This path is relative to the root of the site.
       },
     },
     `gatsby-transformer-remark`,

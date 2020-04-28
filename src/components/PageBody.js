@@ -2,6 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 //require('prismjs/themes/prism.css')
 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
 const Body = styled.div`
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
@@ -98,9 +100,11 @@ const Body = styled.div`
 
 const PageBody = props => {
   return (
-    <Body
-     // dangerouslySetInnerHTML={{ __html: props.body.childMarkdownRemark.html }}
-    />
+    <Body>
+
+      {documentToReactComponents(props.body.json)}
+    </Body>
+    
   )
 }
 

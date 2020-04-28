@@ -7,26 +7,18 @@ import PageBody from '../components/PageBody'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 
-//import SEO from '../components/SEO'
+import SEO from '../components/SEO'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
     title,
     slug,
-    image,
     mainText,
     publicationDate,
-    linkAuthorImage,
   } = data.contentfulPost;
 
+  let image = data.contentfulPost.image
   const defaultImage = data.contentfulDefaultImage.image
-
-  // console.log(slug, "slug");
-  // console.log(image);
-  // console.log(mainText, "main text");
-  // console.log(pageContext, " page context");
-  // console.log(linkAuthorImage, " linkAuthorImage");
-  // console.log("base pathhhhhhhhhhhh", basePath)
 
   const previous = pageContext.prev
   const next = pageContext.next
@@ -43,23 +35,18 @@ const PostTemplate = ({ data, pageContext }) => {
   }
   return (
     <Layout>
-      {/* <SEO
+      <SEO
         title={title}
-        description={
-          metaDescription
-            ? metaDescription.internal.content
-            : body.childMarkdownRemark.excerpt
-        }
+        description={data.contentfulPost.mainText}
        image={ogImage}
-      /> */}
+      />
      
       <Hero title={title} image={image} height={'50vh'} />
       <Container>
         <PostDetails
           date={publicationDate}
-         // timeToRead={body.childMarkdownRemark.timeToRead}
         />
-        <PageBody body={mainText} />
+        <PageBody body={data.contentfulPost.mainText} />
       </Container>
       <PostLinks previous={previous} next={next} basePath={basePath} />
     </Layout>
@@ -71,7 +58,7 @@ query($slug: String!) {
   contentfulPost(slug: { eq: $slug }) {
     slug
     title
-    publicationDate
+    publicationDate(formatString: "MMMM DD, YYYY")
     image {
       fluid(maxWidth: 1800) {
         ...GatsbyContentfulFluid_withWebp_noBase64

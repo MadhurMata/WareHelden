@@ -37,6 +37,7 @@ const NextLink = styled(Link)`
 `
 
 const PostLinks = props => {
+  console.log("postLinks", props)
   return (
     <Wrapper>
       <Box>

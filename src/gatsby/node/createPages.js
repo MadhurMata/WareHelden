@@ -5,9 +5,6 @@ const { paginate } = require(`gatsby-awesome-pagination`)
 
 module.exports = async ({ graphql, actions }) => {
   const { createPage } = actions
-
-  console.log("config.siteMetadata.basePath", config.siteMetadata.basePath)
-
   const basePath = config.siteMetadata.basePath || '/'
 
   // Create a page for each "post"
@@ -15,16 +12,9 @@ module.exports = async ({ graphql, actions }) => {
 
   const posts = postsQuery.data.allContentfulPost.edges
 
-  console.log("posts", posts)
-
   posts.forEach((post, i) => {
     const next = i === posts.length - 1 ? null : posts[i + 1].node
     const prev = i === 0 ? null : posts[i - 1].node
-
-    console.log(post, post.node.slug, )
-
-    console.log("next", next, "prev", prev)
-
 
     createPage({
       path: `${basePath === '/' ? '' : basePath}/${post.node.slug}/`,
@@ -43,49 +33,12 @@ module.exports = async ({ graphql, actions }) => {
     createPage,
     component: path.resolve(`./src/templates/posts.js`),
     items: posts,
-    itemsPerFirstPage: config.siteMetadata.postsPerFirstPage || 7,
-    itemsPerPage: config.siteMetadata.postsPerPage || 6,
+    itemsPerFirstPage: config.siteMetadata.postsPerFirstPage || 4,
+    itemsPerPage: config.siteMetadata.postsPerPage || 3,
     pathPrefix: basePath,
     context: {
       basePath: basePath === '/' ? '' : basePath,
       paginationPath: basePath === '/' ? '' : `/${basePath}`,
     },
-  })
-
-  //   // Create "tag" page and paginate
-  // const tagsQuery = await graphql(query.data.posts)
-  // const tags = tagsQuery.data.allContentfulCourse.edges
-
-  // tags.forEach((tag, i) => {
-  //   const tagPagination =
-  //     basePath === '/'
-  //       ? `/tag/${tag.node.slug}`
-  //       : `/${basePath}/tag/${tag.node.slug}`
-
-  //   paginate({
-  //     createPage,
-  //     component: path.resolve(`./src/templates/tag.js`),
-  //     items: tag.node.post || [],
-  //     itemsPerPage: config.siteMetadata.postsPerPage || 6,
-  //     pathPrefix: tagPagination,
-  //     context: {
-  //       slug: tag.node.slug,
-  //       basePath: basePath === '/' ? '' : basePath,
-  //       paginationPath: tagPagination,
-  //     },
-  //   })
-  // })
-
-  // Create a page for each "page"
-  const pagesQuery = await graphql(query.data.pages)
-  const pages = pagesQuery.data.allContentfulPage.edges
-  pages.forEach((page, i) => {
-    createPage({
-      path: `/${page.node.slug}/`,
-      component: path.resolve(`./src/templates/page.js`),
-      context: {
-        slug: page.node.slug,
-      },
-    })
   })
 }
