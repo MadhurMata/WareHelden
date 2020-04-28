@@ -3,7 +3,7 @@ module.exports = {
     title: `Ware Helden`,
     description: `Description`,
     author: `Madhur Mata`,
-    siteUrl: 'ADDURL',
+    siteUrl: 'https://awesome-torvalds-e5d2af.netlify.app/',
     image: '/images/share.jpg',
     postsPerFirstPage: 4,
     postsPerPage: 6,
