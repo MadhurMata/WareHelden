@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Ware Helden`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: 'https://gcn.netlify.com',
+    description: `Description`,
+    author: `Madhur Mata`,
+    siteUrl: 'ADDURL',
     image: '/images/share.jpg',
     postsPerFirstPage: 4,
     postsPerPage: 6,

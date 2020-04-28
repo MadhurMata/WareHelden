@@ -101,7 +101,6 @@ const Body = styled.div`
 const PageBody = props => {
   return (
     <Body>
-
       {documentToReactComponents(props.body.json)}
     </Body>
     
