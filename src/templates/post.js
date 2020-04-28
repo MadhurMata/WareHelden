@@ -7,7 +7,7 @@ import PageBody from '../components/PageBody'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {

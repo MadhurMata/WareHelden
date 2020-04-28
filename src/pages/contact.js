@@ -3,7 +3,7 @@ import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import ContactForm from '../components/ContactForm'
 import Layout from '../components/layout.js';
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 
 
 const Contact = ({ data }) =>{
