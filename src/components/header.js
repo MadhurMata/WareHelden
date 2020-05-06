@@ -3,14 +3,14 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from '@emotion/styled'
 import Img from "gatsby-image"
+import headerImagen from "../images/header/Header-Background.jpg"
 
 import "./header.scss"
 
 const StickyWrapper = styled.div`
-position: sticky;
+  position: sticky;
   top: 0;
-  z-index: 999; 
-  background-color: white;
+  z-index: 999;
 }
 `
 const Wrapper = styled.header`
@@ -27,6 +27,7 @@ const Container = styled.div`
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
   padding: 1em;
+  background-color: white;
 `
 
 const Title = styled.div`
@@ -35,9 +36,13 @@ const Title = styled.div`
   max-width: 960px;
   padding: 1.45rem 1.0875rem;
   font-size: 2rem;
+  background-image: url(${headerImagen});
   a {
     text-decoration: none;
     color: black;
+  }
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    width: auto;
   }
 `
 
@@ -72,7 +77,7 @@ const Header = () => {
     icons: allFile(filter: {relativePath: {}, relativeDirectory: {eq: "icons"}}){
       nodes{
         childImageSharp {
-          fixed(width:32, height:32){
+          fixed(width:25, height:25){
             ...GatsbyImageSharpFixed
           }
         }
@@ -80,6 +85,7 @@ const Header = () => {
     }
   }
   `)
+
   return(
     <StickyWrapper>
       <Wrapper>

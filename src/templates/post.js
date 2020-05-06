@@ -7,13 +7,11 @@ import PageBody from '../components/PageBody'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
     title,
-    slug,
-    mainText,
     publicationDate,
   } = data.contentfulPost;
 
