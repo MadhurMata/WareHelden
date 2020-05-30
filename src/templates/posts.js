@@ -18,12 +18,12 @@ const Posts = ({ data, pageContext }) => {
   let ogImage
   const truncateOptions = {
     hero: {
-      lines: 3,
-      width: 1000
+      lines: 1,
+      width: 3000
     },
     cardList: {
-      lines: 2,
-      width: 800
+      lines: 1,
+      width: 2000
     }
   }
 
@@ -104,28 +104,4 @@ query($skip: Int!, $limit: Int!) {
 `
 
 export default Posts
-
-
-// query {
-//   allContentfulPost(sort: { fields: [publicationDate], order: DESC }) {
-//     edges {
-//       node {
-//         slug
-//         title
-//         publicationDate(formatString: "MMMM DD, YYYY")
-//         image {
-//           fluid(maxWidth: 1800) {
-//             src
-//           }
-//         }
-//         body {
-//           json
-//         }
-//         linkAuthorImage {
-//           json
-//         }
-//       }
-//     }
-//   }
-// }
 

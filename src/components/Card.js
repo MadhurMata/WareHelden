@@ -46,48 +46,58 @@ const StyledImg = styled(Img)`
 `
 
 const Title = styled.h2`
-  font-size: 1.5em;
-  font-weight: 600;
   text-transform: capitalize;
   margin: 1rem 1rem 0.5rem 1rem;
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ec6464;
+
 `
 
-const Date = styled.h3`
+const Date = styled.h4`
   margin: 0 1rem 0.5rem 1rem;
   color: gray;
 `
 
-const ReadingTime = styled.h4`
+const ReadingTime = styled.p`
   margin: 0 1rem 1.5rem 1rem;
   padding-bottom: 1rem;
-  color: gray;
+  span {
+     color: #121212;
+    font-family: 'Source Code Pro', cursive;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-variant: all-petite-caps;
+  }
 `
 const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
-  //const display = image ? "content" : "none"
+  console.log(documentToReactComponents(mainText.json))
   image = image ? image.fluid : defaultImage.fluid
   title = title ? title : " "
+
   return (
     <>
       {image && mainText && truncateOptions && title && mainText && (
         <Post featured={props.featured}>
-          <Link to={`${props.basePath}/${slug}/`}>
+          <Link to={`${props.basePath}/${title}/`}>
             <StyledImg
-              //display={display}
               key={slug}
               fluid={image}
+              imgStyle={{ objectPosition: 'top' }}
               backgroundColor={'#eeeeee'} />
             <Title>{title}</Title>
             <Date>{publicationDate}</Date>
             <ReadingTime>
               <Truncate
                 lines={truncateOptions.lines}
-                width={truncateOptions.width} // width being how much you want to truncate your copy
+                width={truncateOptions.width}
                 ellipsis='&hellip;'
               >
                   {documentToReactComponents(mainText.json)}
               </Truncate>
             </ReadingTime>
-            </Link>
+          </Link>
         </Post>
       )}
     </>

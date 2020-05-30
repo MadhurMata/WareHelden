@@ -31,8 +31,9 @@ const BgImg = styled(Img)`
 const Title = styled.h1`
   z-index: 2;
   font-size: 3em;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
   text-transform: capitalize;
-  font-weight: 600;
   position: absolute;
   width: 100%;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
@@ -47,7 +48,9 @@ const Title = styled.h1`
 const Hero = props => (
 
   <Wrapper height={props.height}>
-    <BgImg fluid={props.image.fluid} backgroundColor={'#eeeeee'} />
+    <BgImg
+      fluid={props.image.fluid}
+      backgroundColor={'#eeeeee'} />
     <Title>{props.title}</Title>
   </Wrapper>
 )

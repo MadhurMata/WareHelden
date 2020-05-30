@@ -3,6 +3,9 @@ import { navigate, Link } from 'gatsby'
 import styled from '@emotion/styled'
 import SelectIcon from '../icons/SelectIcon'
 
+import "../styles/Buttons.scss"
+
+
 const Wrapper = styled.div`
   width: 100%;
   margin: -1.5rem auto 2.5rem;
@@ -12,23 +15,6 @@ const Wrapper = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: baseline;
-`
-
-const Button = styled(Link)`
-  background: ${props => props.theme.colors.primary};
-  color: white;
-  padding: 1rem;
-  border-radius: 2px;
-  margin: 0 0 0 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.3s all;
-  &:hover {
-    background: ${props => props.theme.colors.highlight};
-  }
-  @media (hover: none) {
-    background: ${props => props.theme.colors.primary} !important;
-  }
 `
 
 const Numbers = styled.div`
@@ -106,14 +92,14 @@ const Pagination = props => {
           </Numbers>
           <div>
             {props.context.previousPagePath && (
-              <Button to={`${props.context.previousPagePath}`}>
+              <Link className="btn btn--stripe" to={`${props.context.previousPagePath}`}>
                 <span>&larr;</span> Prev
-              </Button>
+              </Link>
             )}
             {props.context.nextPagePath && (
-              <Button style={{ order: 3 }} to={`${props.context.nextPagePath}`}>
+              <Link className="btn btn--stripe" style={{ order: 3 }} to={`${props.context.nextPagePath}`}>
                 Next <span>&rarr;</span>
-              </Button>
+              </Link>
             )}
           </div>
         </Wrapper>

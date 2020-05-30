@@ -16,7 +16,6 @@ export const globalStyles = css`
   p,
   blockquote,
   pre,
-  a,
   abbr,
   acronym,
   address,
@@ -88,28 +87,16 @@ export const globalStyles = css`
     /* stylelint-disable-next-line */
     font: inherit;
     vertical-align: baseline;
+    font-family: 'Source Code Pro', cursive;
   }
-
-  /* Added to Fix Footer to bottom of viewport */
-  html,
-  body {
-    background: white;
-    height: 100%;
-  }
-  .siteRoot {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .siteContent {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-  }
-  footer {
-    width: 100%;
-  }
-
+  
+  h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+  
   /* End Fix to Place Footer on Bottom of Viewport */
 
   article,
@@ -168,12 +155,6 @@ export const globalStyles = css`
     text-rendering: optimizeLegibility;
     text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
     font-weight: 400;
-  }
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
   }
 
   button,

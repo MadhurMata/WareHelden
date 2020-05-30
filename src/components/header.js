@@ -3,14 +3,13 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import styled from '@emotion/styled'
 import Img from "gatsby-image"
-import headerImagen from "../images/header/Header-Background.jpg"
-
 import "./header.scss"
 
 const StickyWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 999;
+  background-color: white;
 }
 `
 const Wrapper = styled.header`
@@ -23,21 +22,19 @@ const Wrapper = styled.header`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
-  padding: 1em;
-  background-color: white;
+  padding: 0.6em;
 `
 
 const Title = styled.div`
-  display: flex;
-  justify-content: center;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
-  font-size: 2rem;
-  background-image: url(${headerImagen});
-  a {
+display: flex;
+justify-content: center;
+max-width: 960px;
+padding: 1.45rem 1.0875rem;
+margin: 2rem 0;
+a {
     text-decoration: none;
     color: black;
   }
@@ -54,6 +51,9 @@ const List = styled.ul`
 
 const Item = styled.li`
   list-style: none;
+  font-family: 'Source Code Pro', cursive;
+  font-size: 0.9rem;
+  text-align: justify;
   margin: 0 0.8rem;
   padding: 0.25em 0;
   width: 100%;
@@ -62,7 +62,7 @@ const Item = styled.li`
   }
   a {
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.2s;
     color:  #999999;
     &:hover {
@@ -91,7 +91,7 @@ const Header = () => {
       <Wrapper>
         <Title>
           <h1>
-            <Link to="/"> Ware Helden</Link>
+            <Link to="/"> WARE HELDEN</Link>
           </h1>
         </Title>
         <Container>
@@ -106,7 +106,7 @@ const Header = () => {
               fixed={data.icons.nodes[0].childImageSharp.fixed}
               alt="social-media"/></a>
             </Item>
-            <Item><a href="https://www.facebook.com/warehelden/"><Img
+            <Item><a href="https://www.instagram.com/warehelden/"><Img
               className="icon"
               fixed={data.icons.nodes[1].childImageSharp.fixed}
               alt="Facebook"/></a>

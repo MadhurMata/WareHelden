@@ -2,6 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
+import "../styles/Buttons.scss"
+
 const Wrapper = styled.div`
   margin: -2em 0 0 0;
   padding: 0 1.5em 2em;
@@ -13,43 +15,24 @@ const Box = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width:   max-width: ${props => props.theme.sizes.maxWidth};
-  a {
-    background: ${props => props.theme.colors.primary};
-    color: white;
-    padding: 1em;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: 0.2s;
-    &:hover {
-      background: ${props => props.theme.colors.highlight};
-    }
   }
-`
-
-const PreviousLink = styled(Link)`
-  margin-right: auto;
-  order: 1;
-`
-
-const NextLink = styled(Link)`
-  margin-left: auto;
-  order: 2;
 `
 
 const PostLinks = props => {
   console.log("postLinks", props)
+  console.log("nextttttt", props.next)
   return (
     <Wrapper>
       <Box>
         {props.previous && (
-          <PreviousLink to={`${props.basePath}/${props.previous.slug}/`}>
+          <Link className="btn btn--stripe"  to={`${props.basePath}/${props.previous.title}/`}>
             &#8592; Prev
-          </PreviousLink>
+          </Link>
         )}
         {props.next && (
-          <NextLink to={`${props.basePath}/${props.next.slug}/`}>
+          <Link className="btn btn--stripe" to={`${props.basePath}/${props.next.title}/`}>
             Next &#8594;
-          </NextLink>
+          </Link>
         )}
       </Box>
     </Wrapper>

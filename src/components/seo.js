@@ -42,11 +42,8 @@ const SEO = ({ title, description, image }) => {
       <meta property="og:image" content={metaImage} />
       <meta property="og:description" content={metaDescription} />
 
-      {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:image" content={metaImage} />
-      <meta name="twitter:description" content={metaDescription} />
+      <link rel="caninical" href=""/>
+
     </Helmet>
   )
 }

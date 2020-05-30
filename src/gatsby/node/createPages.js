@@ -13,8 +13,6 @@ module.exports = async ({ graphql, actions }) => {
   const posts = postsQuery.data.allContentfulPost.edges
 
   posts.forEach((post, i) => {
-    const urlpost = post.node.title ? post.node.title : "post"
-    console.log(post,"############")
     const next = i === posts.length - 1 ? null : posts[i + 1].node
     const prev = i === 0 ? null : posts[i - 1].node
 
@@ -22,7 +20,7 @@ module.exports = async ({ graphql, actions }) => {
       path: `${basePath === '/' ? '' : basePath}/${post.node.slug}/`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
-        slug: post.node.slug,
+        title: post.node.slug,
         basePath: basePath === '/' ? '' : basePath,
         prev,
         next,

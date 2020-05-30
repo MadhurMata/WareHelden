@@ -29,6 +29,10 @@ const Body = styled.div`
   p {
     line-height: 1.6;
     margin: 0 0 2em 0;
+    font-family: 'Source Code Pro', cursive;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: justify;
   }
 
   a {

@@ -2,11 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
-/*
-  ⚠️ This is an example of a contact form powered with Netlify form handling.
-  Be sure to review the Netlify documentation for more information:
-  https://www.netlify.com/docs/form-handling/
-*/
+import "../styles/Buttons.scss"
 
 const Form = styled.form`
   max-width: ${props => props.theme.sizes.maxWidthCentered};
@@ -19,9 +15,9 @@ const Form = styled.form`
   textarea {
     font-family: inherit;
     font-size: inherit;
-    background: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.text};
-    border-radius: 2px;
+    color: #666;
+    border: 2px solid #666;
+    border-radius: 6px;
     padding: 1em;
     &::-webkit-input-placeholder {
       color: gray;
@@ -78,16 +74,6 @@ const Message = styled.textarea`
   resize: vertical;
 `
 
-const Submit = styled.input`
-  background: ${props => props.theme.colors.text} !important;
-  color: white !important;
-  cursor: pointer;
-  transition: 0.2s;
-  &:hover {
-    background: ${props => props.theme.colors.highlight} !important;
-  }
-`
-
 const Modal = styled.div`
   background: white;
   padding: 2em;
@@ -112,28 +98,6 @@ const Modal = styled.div`
   p {
     line-height: 1.6;
     margin: 0 0 2em 0;
-  }
-`
-
-const Button = styled.div`
-  background: ${props => props.theme.colors.text};
-  font-size: 1em;
-  display: inline-block;
-  margin: 0 auto;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: white;
-  padding: 1em;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: 0.2s;
-  z-index: 99;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    background: ${props => props.theme.colors.highlight};
   }
 `
 
@@ -229,14 +193,13 @@ class ContactForm extends React.Component {
           onChange={this.handleInputChange}
           required
         />
-        <Submit name="submit" type="submit" value="Send" />
-
+        <button className="btn btn--stripe" name="submit" type="submit" value="Send" >Send</button>
         <Modal visible={this.state.showModal}>
           <p>
             Thank you for reaching out. I will get back to you as soon as
             possible.
           </p>
-          <Button onClick={this.closeModal}>Okay</Button>
+          <button className="btn btn--stripe" onClick={this.closeModal}>Okay</button>
         </Modal>
       </Form>
     )
