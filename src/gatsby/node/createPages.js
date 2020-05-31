@@ -9,18 +9,18 @@ module.exports = async ({ graphql, actions }) => {
 
   // Create a page for each "post"
   const postsQuery = await graphql(query.data.posts)
-
   const posts = postsQuery.data.allContentfulPost.edges
+
 
   posts.forEach((post, i) => {
     const next = i === posts.length - 1 ? null : posts[i + 1].node
     const prev = i === 0 ? null : posts[i - 1].node
 
     createPage({
-      path: `${basePath === '/' ? '' : basePath}/${post.node.slug}/`,
+      path: `${basePath === '/' ? '' : basePath}/blog/${post.node.slug}/`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
-        title: post.node.slug,
+        slug: post.node.slug,
         basePath: basePath === '/' ? '' : basePath,
         prev,
         next,

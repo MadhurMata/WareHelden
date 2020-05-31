@@ -11,11 +11,9 @@ import { startCase } from 'lodash'
 const Posts = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
   const { humanPageNumber, basePath } = pageContext
-  const isFirstPage = humanPageNumber === 1
-  const defaultImage = data.allContentfulDefaultImage.edges[0].node.image
 
-  let featuredPost
-  let ogImage
+  const isFirstPage = humanPageNumber === 1
+
   const truncateOptions = {
     hero: {
       lines: 1,
@@ -27,15 +25,18 @@ const Posts = ({ data, pageContext }) => {
     }
   }
 
+  let featuredPost
   try {
     featuredPost = posts[0].node
   } catch (error) {
     featuredPost = null
   }
+
+  let ogImage
   try {
     ogImage = posts[0].node.image.fluid.src 
   } catch (error) {
-    ogImage = defaultImage.fluid.src 
+    ogImage = null
   }
 
   return (
@@ -44,15 +45,15 @@ const Posts = ({ data, pageContext }) => {
       <Container>
         {isFirstPage ? (
           <CardList>
-            <Card defaultImage={defaultImage} {...featuredPost} truncateOptions={truncateOptions.hero} featured basePath={basePath} />
+            <Card {...featuredPost} truncateOptions={truncateOptions.hero} featured basePath={basePath} />
             {posts.slice(1).map(({ node: post }, key) => (
-              <Card defaultImage={defaultImage} key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
+              <Card key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
             ))}
           </CardList>
         ) : (
           <CardList>
             {posts.map(({ node: post }, key) => (
-              <Card defaultImage={defaultImage} key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
+              <Card key={key} truncateOptions={truncateOptions.cardList} {...post} basePath={basePath} />
             ))}
           </CardList>
         )}
@@ -82,24 +83,9 @@ query($skip: Int!, $limit: Int!) {
         mainText {
           json
         }
-        linkAuthorImage {
-          json
-        }
       }
     }
   }
-  allContentfulDefaultImage {
-    edges {
-      node {
-        image {
-          fluid(maxWidth: 1800) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-            src
-          }
-        }
-      }     
-    }
-  }  
 }
 `
 

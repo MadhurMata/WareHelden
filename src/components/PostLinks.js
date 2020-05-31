@@ -19,18 +19,16 @@ const Box = styled.div`
 `
 
 const PostLinks = props => {
-  console.log("postLinks", props)
-  console.log("nextttttt", props.next)
   return (
     <Wrapper>
       <Box>
         {props.previous && (
-          <Link className="btn btn--stripe"  to={`${props.basePath}/${props.previous.title}/`}>
+          <Link className="btn btn--stripe"  to={`blog/${props.basePath}/${props.previous.slug}/`}>
             &#8592; Prev
           </Link>
         )}
         {props.next && (
-          <Link className="btn btn--stripe" to={`${props.basePath}/${props.next.title}/`}>
+          <Link className="btn btn--stripe" to={`blog/${props.basePath}/${props.next.slug}/`}>
             Next &#8594;
           </Link>
         )}

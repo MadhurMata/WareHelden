@@ -58,8 +58,9 @@ const Select = styled.select`
 `
 
 const Pagination = props => {
-  
+
   function changePage(e) {
+
     navigate(
       e.target.value
         ? `${props.context.paginationPath}/${e.target.value}`
@@ -92,12 +93,12 @@ const Pagination = props => {
           </Numbers>
           <div>
             {props.context.previousPagePath && (
-              <Link className="btn btn--stripe" to={`${props.context.previousPagePath}`}>
+              <Link className="btn btn--stripe" to={`/${props.context.previousPagePath}`}>
                 <span>&larr;</span> Prev
               </Link>
             )}
             {props.context.nextPagePath && (
-              <Link className="btn btn--stripe" style={{ order: 3 }} to={`${props.context.nextPagePath}`}>
+              <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.nextPagePath}`}>
                 Next <span>&rarr;</span>
               </Link>
             )}

@@ -71,19 +71,16 @@ const ReadingTime = styled.p`
     font-variant: all-petite-caps;
   }
 `
-const Card = ({ defaultImage, slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
-  console.log(documentToReactComponents(mainText.json))
-  image = image ? image.fluid : defaultImage.fluid
-  title = title ? title : " "
+const Card = ({ slug, image, title, truncateOptions, publicationDate, mainText, ...props }) => {
 
   return (
     <>
       {image && mainText && truncateOptions && title && mainText && (
         <Post featured={props.featured}>
-          <Link to={`${props.basePath}/${title}/`}>
+          <Link to={`${props.basePath}/blog/${slug}/`}>
             <StyledImg
               key={slug}
-              fluid={image}
+              fluid={image.fluid}
               imgStyle={{ objectPosition: 'top' }}
               backgroundColor={'#eeeeee'} />
             <Title>{title}</Title>

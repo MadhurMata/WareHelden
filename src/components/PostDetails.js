@@ -20,7 +20,6 @@ const Date = styled.p`
 `
 
 const PostDetails = props => {
-  console.log(props)
   return (
     <Wrapper>
       <Date>{props.date}</Date>

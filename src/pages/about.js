@@ -100,7 +100,6 @@ const About = () =>{
   }
   `)
 
-  console.log('........', data)
   return(
     <Layout>
     <SEO title="About" />

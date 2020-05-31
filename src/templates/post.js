@@ -15,15 +15,12 @@ const PostTemplate = ({ data, pageContext }) => {
     publicationDate,
   } = data.contentfulPost;
 
+
   let image = data.contentfulPost.image
-  const defaultImage = data.contentfulDefaultImage.image
 
   const previous = pageContext.prev
   const next = pageContext.next
   const { basePath } = pageContext
-
-   image = image ? image : defaultImage
-
 
   let ogImage
   try {
@@ -52,7 +49,7 @@ const PostTemplate = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-query($slug: String!) {
+query($slug: String) {
   contentfulPost(slug: { eq: $slug }) {
     slug
     title
@@ -65,18 +62,7 @@ query($slug: String!) {
     mainText {
       json
     }
-    linkAuthorImage {
-      json
-    }
   }
-  contentfulDefaultImage {
-    image {
-      fluid(maxWidth: 1800) {
-        ...GatsbyContentfulFluid_withWebp_noBase64
-        src
-      }
-    }
-  }        
 }
 `
 
