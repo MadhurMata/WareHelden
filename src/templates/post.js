@@ -2,19 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout.js'
 import Hero from '../components/Hero'
-import Container from '../components/Container'
 import PageBody from '../components/PageBody'
 import PostLinks from '../components/PostLinks'
-import PostDetails from '../components/PostDetails'
 
 import SEO from '../components/SEO'
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
     title,
     publicationDate,
   } = data.contentfulPost;
-
 
   let image = data.contentfulPost.image
 
@@ -28,6 +26,9 @@ const PostTemplate = ({ data, pageContext }) => {
   } catch (error) {
     ogImage = null
   }
+
+  console.log(documentToReactComponents(data.contentfulPost.mainText.json))
+
   return (
     <Layout>
       <SEO
@@ -36,13 +37,8 @@ const PostTemplate = ({ data, pageContext }) => {
        image={ogImage}
       />
      
-      <Hero title={title} image={image} height={'50vh'} />
-      <Container>
-        <PostDetails
-          date={publicationDate}
-        />
+      <Hero title={title} image={image} display={'flex'} justify-content={'center'} date={publicationDate} body={data.contentfulPost.mainText}/>
         <PageBody body={data.contentfulPost.mainText} />
-      </Container>
       <PostLinks previous={previous} next={next} basePath={basePath} />
     </Layout>
   )
