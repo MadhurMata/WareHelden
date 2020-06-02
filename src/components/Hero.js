@@ -1,31 +1,44 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from "@emotion/styled"
-import Container from "./Container"
 
-const Wrapper = styled.section`
-  width: 50%;
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
+const Div = styled.div`
+  font-family: 'Source Code Pro',cursive;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 2rem 0 3rem;
+  @media screen and (max-width: 480px) {
+    margin: 0 2%;
+  }
+  `
+
+const Wrapper = styled.div`
+  float: left;
+  width: 40%;
+  height: auto;
   box-shadow: 0 2px 10px #aaa;
   border: 1px solid #aaa;
   padding: 1rem 1rem 1rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  @media (max-width: 480px) {
+  width: 100%;
   margin-bottom: 2rem;
+  }
 `
+
 const BgImg = styled(Img)`
   position: absolute;
   width: 100%;
   height: auto;
+  border: 1px solid #aaa;
+  border-radius: 10px;
 `
-
-const Title = styled.h1`
-  display: inline-block;
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 0.5rem 0 1rem;
-`
-
 const Date = styled.p`
   padding-top: 1rem;
-  display: inline-block;
   font-family: "Source Code Pro", cursive;
   font-size: 0.9rem;
   font-weight: 700;
@@ -33,46 +46,35 @@ const Date = styled.p`
   color: #999999;
 `
 
-const Div = styled.div`
-    display: flex;
- font-family: 'Source Code Pro',cursive;
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-align: justify;
-  `
+const Title = styled.h1`
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem 0 1rem;
+  @media (max-width: 480px) {
+    display: block;
+  }
+`
 
 const FirstParagraph = styled.p`
-line-height: 1.6;   font-family: 'Source Code Pro',cursive;
+  line-height: 1.6;   
+  font-family: 'Source Code Pro',cursive;
   font-size: 0.9rem;
   font-weight: 400;
-     font-size: 0.9rem;
-
+  font-size: 0.9rem;
+  text-align: justify;
+  @media (max-width: 480px) {
+    display: block;
+  }
 `
 
 const Hero = props => (
   <Div>
-    <Wrapper /*height={props.height}*/>
-      <BgImg fluid={props.image.fluid} backgroundColor={"#eeeeee"} />
-      <Date>{props.date}</Date>
-    </Wrapper>
-    <Container>
+      <Wrapper /*height={props.height}*/>
+        <BgImg fluid={props.image.fluid} backgroundColor={"#eeeeee"} />
+        <Date>{props.date}</Date>
+      </Wrapper>
       <Title>{props.title}</Title>
-      <FirstParagraph>
-        My 2019 did not run as expected. Quite unexpectedly, I had to let go my
-        dear love, while I did not want this at all. I went through incredible
-        pain, because I decided to let him follow his own path. I have never
-        felt so abandoned and lonely. Running away in distractions was tempting,
-        but I chose to accept the pain and go through it. I decided to spend
-        many days in bed, I cried so so much, I seeked for help from my loved
-        ones and got support from a coach. Instead of being mad at the other,
-        the situation and the world, I decided to continue to inhale and exhale
-        love. Also towards the one who, in my opinion, had let me down so badly,
-        because no matter how unfair everything felt I still believe he has a
-        beautiful heart. For me that is ultimately true love. That you wish the
-        other the best, even if this means that you are no longer part of
-        someone's life.
-      </FirstParagraph>
-    </Container>
+      <FirstParagraph>{documentToReactComponents(props.body.json)}</FirstParagraph>
   </Div>
 )
 
