@@ -87,7 +87,6 @@ const About = ({location}) =>{
   }
   `)
 
-  console.log('location', location);
   return(
     <Layout pathUrl={location.pathname}>
     <SEO title="About" />

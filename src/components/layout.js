@@ -8,7 +8,6 @@ import "./layout.css"
 import { globalStyles } from '../styles/globalStyles'
 
 const Layout = ({ children, pathUrl }) => {
-console.log(pathUrl)
   return (
    <div
    style={{

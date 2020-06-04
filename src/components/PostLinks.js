@@ -17,9 +17,6 @@ const Box = styled.div`
 `
 
 const PostLinks = props => {
-  console.log('props.previous', props.previous)
-  const justifyRight = props.previous ? "space-between" : "flex-end";
-  console.log('justifyRight', justifyRight);
   return (
     <Wrapper>
       <Box>

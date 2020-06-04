@@ -126,7 +126,6 @@ const Header = ({ path }) => {
       }
     }
   `)
-  console.log("props header", path)
   return (
     <StickyWrapper>
       <Wrapper>
