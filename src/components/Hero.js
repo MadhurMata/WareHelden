@@ -3,6 +3,7 @@ import Img from "gatsby-image"
 import styled from "@emotion/styled"
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Container from "./Container"
 
 const Div = styled.div`
   font-family: 'Source Code Pro',cursive;
@@ -24,9 +25,11 @@ const Wrapper = styled.div`
   margin-right: 2rem;
   margin-bottom: 1rem;
   border-radius: 10px;
-  @media (max-width: 480px) {
-  width: 100%;
-  margin-bottom: 2rem;
+  @media screen and (max-width: ${props => props.theme.responsive.small}) { 
+    float: none;
+    margin: 0;
+    width: 80%;
+    margin-bottom: 1rem;
   }
 `
 
@@ -50,7 +53,7 @@ const Title = styled.h1`
   font-size: 1.5rem;
   text-align: center;
   padding: 0.5rem 0 1rem;
-  @media (max-width: 480px) {
+  @media screen and (max-width: ${props => props.theme.responsive.small}) { 
     display: block;
   }
 `
@@ -62,20 +65,20 @@ const FirstParagraph = styled.p`
   font-weight: 400;
   font-size: 0.9rem;
   text-align: justify;
-  @media (max-width: 480px) {
+  @media screen and (max-width: ${props => props.theme.responsive.small}) { 
     display: block;
   }
 `
 
 const Hero = props => (
-  <Div>
+  <Container>
       <Wrapper /*height={props.height}*/>
         <BgImg fluid={props.image.fluid} backgroundColor={"#eeeeee"} />
         <Date>{props.date}</Date>
       </Wrapper>
       <Title>{props.title}</Title>
       <FirstParagraph>{documentToReactComponents(props.body.json)}</FirstParagraph>
-  </Div>
+  </Container>
 )
 
 export default Hero

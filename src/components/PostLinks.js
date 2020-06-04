@@ -10,8 +10,6 @@ const Wrapper = styled.div`
 `
 
 const Box = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin: 0 auto;
   width: 100%;
   max-width:   max-width: ${props => props.theme.sizes.maxWidth};
@@ -19,16 +17,19 @@ const Box = styled.div`
 `
 
 const PostLinks = props => {
+  console.log('props.previous', props.previous)
+  const justifyRight = props.previous ? "space-between" : "flex-end";
+  console.log('justifyRight', justifyRight);
   return (
     <Wrapper>
       <Box>
         {props.previous && (
-          <Link className="btn btn--stripe"  to={`blog/${props.basePath}/${props.previous.slug}/`}>
+          <Link className="btn btn--stripe" style={{ float: "left" }} to={`blog/${props.basePath}/${props.previous.slug}/`}>
             &#8592; Prev
           </Link>
         )}
         {props.next && (
-          <Link className="btn btn--stripe" to={`blog/${props.basePath}/${props.next.slug}/`}>
+          <Link className="btn btn--stripe" style={{ float: "right" }} to={`blog/${props.basePath}/${props.next.slug}/`}>
             Next &#8594;
           </Link>
         )}

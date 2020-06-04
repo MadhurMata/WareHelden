@@ -4,7 +4,7 @@ import Layout from '../components/layout.js'
 import Hero from '../components/Hero'
 import PostLinks from '../components/PostLinks'
 
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {

@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 `
 
 const Numbers = styled.div`
@@ -38,12 +38,16 @@ const Numbers = styled.div`
   @media (hover: none) {
     background: white !important;
   }
+    @media screen and (max-width: ${props => props.theme.responsive.small}) { 
+    padding: 0.74rem;
+  }
 `
 
 const Select = styled.select`
   font-size: 1rem;
   background: none;
-  border: none;
+  border: 2px solid #666;
+  border-radius: 6px;
   cursor: pointer;
   position: absolute;
   width: 100%;
@@ -88,12 +92,12 @@ const Pagination = props => {
                 </option>
               ))}
             </Select>
-            / {props.context.numberOfPages} 
+            / {props.context.numberOfPages}
             <SelectIcon />
           </Numbers>
           <div>
             {props.context.previousPagePath && (
-              <Link className="btn btn--stripe" to={`/${props.context.previousPagePath}`}>
+              <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.previousPagePath}`}>
                 <span>&larr;</span> Prev
               </Link>
             )}

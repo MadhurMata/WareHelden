@@ -5,7 +5,7 @@ import CardList from '../components/CardList'
 import Card from '../components/Card'
 import Container from '../components/Container'
 import Pagination from '../components/Pagination'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import { startCase } from 'lodash'
 
 const Posts = ({ data, pageContext }) => {

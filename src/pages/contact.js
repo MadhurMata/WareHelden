@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../components/Container'
 import ContactForm from '../components/ContactForm'
 import Layout from '../components/layout.js';
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import styled from "@emotion/styled"
 
 const PageTitle = styled.h1`
@@ -19,7 +19,7 @@ const Contact = () =>{
     <Layout>
     <SEO title="Contact" description="Contact description goes here" />
     <Container>
-      <PageTitle>All your words are very welcome. Feel free to share your comments, ideas, questions, tips, and feelings.</PageTitle>
+      <PageTitle>All your words are very welcome. Feel free to share your comments, ideas, questions, tips, and feelings</PageTitle>
       <ContactForm />
     </Container>
   </Layout>

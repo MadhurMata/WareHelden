@@ -7,8 +7,8 @@ import Header from "./header"
 import "./layout.css"
 import { globalStyles } from '../styles/globalStyles'
 
-const Layout = ({ children }) => {
-
+const Layout = ({ children, pathUrl }) => {
+console.log(pathUrl)
   return (
    <div
    style={{
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
      padding: `0 1.0875rem 1.45rem`,
     }}
     >
-      <Header/>
+      <Header path={pathUrl}/>
       <main>{children}</main>
       <Global styles={globalStyles} />
     </div>

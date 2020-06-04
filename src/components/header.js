@@ -1,16 +1,16 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
 import Img from "gatsby-image"
-import "./header.scss"
+
+import "../styles/Buttons.scss"
 
 const StickyWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 999;
   background-color: white;
-}
 `
 const Wrapper = styled.header`
   display: flex;
@@ -29,87 +29,149 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
-display: flex;
-justify-content: center;
-max-width: 960px;
-padding: 1.45rem 1.0875rem;
-margin: 2rem 0;
-a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-width: 960px;
+  padding: 1.45rem 1.0875rem;
+  margin: 2rem 0;
+  a {
     text-decoration: none;
     color: black;
   }
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+  h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+     margin: 0;
+  }
+  @media screen and (max-width: ${props => props.theme.responsive.small}) {
     width: auto;
+    padding: 0;
+    margin: 1rem 0;
+    h1 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+  }
   }
 `
 
 const List = styled.ul`
   display: flex;
   justify-content: center;
-  align-item: center; 
+  align-item: center;
 `
 
 const Item = styled.li`
   list-style: none;
-  font-family: 'Source Code Pro', cursive;
+  font-family: "Source Code Pro", cursive;
   font-size: 0.9rem;
   text-align: justify;
   margin: 0 0.8rem;
   padding: 0.25em 0;
   width: 100%;
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+  @media screen and (max-width: ${props => props.theme.responsive.small}) {
     width: auto;
+    margin: 0 0.3rem;
   }
   a {
     text-decoration: none;
     font-weight: 700;
     transition: all 0.2s;
-    color:  #999999;
+    color: #999999;
     &:hover {
       color: #666666;
     }
   }
 `
 
-const Header = () => {
+const Header = ({ path }) => {
   const data = useStaticQuery(graphql`
-  query {
-    icons: allFile(filter: {relativePath: {}, relativeDirectory: {eq: "icons"}}){
-      nodes{
-        childImageSharp {
-          fixed(width:25, height:25){
-            ...GatsbyImageSharpFixed
+    query {
+      icons: allFile(
+        filter: { relativePath: {}, relativeDirectory: { eq: "icons" } }
+      ) {
+        nodes {
+          childImageSharp {
+            fixed(width: 20, height: 20) {
+              ...GatsbyImageSharpFixed
+            }
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+          description
+          image
+          siteUrl
+        }
+      }
     }
-  }
   `)
-
-  return(
+  console.log("props header", path)
+  return (
     <StickyWrapper>
       <Wrapper>
         <Title>
-          <h1>
-            <Link to="/"> WARE HELDEN</Link>
-          </h1>
+          <Link to="/">
+            { path === '/about' ? <h3>THE STORY OF</h3> : null }
+            <h1>WARE HELDEN</h1>
+          </Link>
         </Title>
         <Container>
           <List>
-            <Item><Link activeStyle={{color:"#333333"}} to="/">Blog</Link></Item>
-            <Item><Link activeStyle={{color:"#333333"}} to="/about/">About</Link></Item>
-            <Item><Link activeStyle={{color:"#333333"}} to="/contact/">Contact</Link></Item>
+            <Item>
+              <Link
+                activeStyle={{ color: "#333333" }}
+                className="btn btn--stripe"
+                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
+                to="/"
+              >
+                Blog
+              </Link>
+            </Item>
+            <Item>
+              <Link
+                activeStyle={{ color: "#333333" }}
+                className="btn btn--stripe"
+                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
+                to="/about"
+              >
+                About
+              </Link>
+            </Item>
+            <Item>
+              <Link
+                activeStyle={{ color: "#333333" }}
+                className="btn btn--stripe"
+                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </Item>
           </List>
           <List>
-            <Item><a href="https://www.facebook.com/warehelden"><Img
-              className="icon"
-              fixed={data.icons.nodes[0].childImageSharp.fixed}
-              alt="social-media"/></a>
+            <Item>
+              <a href="https://www.instagram.com/warehelden/">
+                <Img
+                  className="icon"
+                  fixed={data.icons.nodes[0].childImageSharp.fixed}
+                  alt="social-media-instagram"
+                />
+              </a>
             </Item>
-            <Item><a href="https://www.instagram.com/warehelden/"><Img
-              className="icon"
-              fixed={data.icons.nodes[1].childImageSharp.fixed}
-              alt="Facebook"/></a>
+            <Item>
+              <a href="https://www.facebook.com/warehelden">
+                <Img
+                  className="icon"
+                  fixed={data.icons.nodes[1].childImageSharp.fixed}
+                  alt="social-media-facebook"
+                />
+              </a>
             </Item>
           </List>
         </Container>
@@ -127,5 +189,3 @@ Header.defaultProps = {
 }
 
 export default Header
-
-
