@@ -97,7 +97,7 @@ const Item = styled.li`
     transition: all 0.2s;
     color: #999999;
     &:hover {
-      color: #666666;
+      color: #fff;
     }
   }
 `
