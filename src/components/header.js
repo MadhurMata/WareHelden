@@ -26,6 +26,9 @@ const Container = styled.div`
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
   padding: 0.6em;
+  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+    padding: 0;
+  }
 `
 
 const Title = styled.div`
@@ -40,10 +43,10 @@ const Title = styled.div`
     color: black;
   }
   h3 {
-    font-family: 'Amatic SC', cursive;
+    font-family: "Amatic SC", cursive;
     font-size: 2rem;
     font-weight: 700;
-     margin: 0;
+    margin: 0;
   }
   @media screen and (max-width: ${props => props.theme.responsive.small}) {
     width: auto;
@@ -54,14 +57,26 @@ const Title = styled.div`
     }
     h3 {
       font-size: 1.5rem;
-  }
+    }
   }
 `
 
-const List = styled.ul`
+const ListMedia = styled.ul`
   display: flex;
   justify-content: center;
   align-item: center;
+  @media screen and (max-width: ${props => props.theme.responsive.small}) { 
+    justify-content: space-between;
+    flex-direction: column;
+  }
+`
+const NavBar = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  @media screen and (max-width: ${props => props.theme.responsive.small}) { 
+    justify-content: space-between;
+  }
 `
 
 const Item = styled.li`
@@ -122,7 +137,7 @@ const Header = ({ path }) => {
           </Link>
         </Title>
         <Container>
-          <List>
+          <NavBar>
             <Item>
               <Link
                 activeStyle={{ color: "#333333" }}
@@ -153,8 +168,8 @@ const Header = ({ path }) => {
                 Contact
               </Link>
             </Item>
-          </List>
-          <List>
+          </NavBar>
+          <ListMedia>
             <Item>
               <a href="https://www.instagram.com/warehelden/">
                 <Img
@@ -173,7 +188,7 @@ const Header = ({ path }) => {
                 />
               </a>
             </Item>
-          </List>
+          </ListMedia>
         </Container>
       </Wrapper>
     </StickyWrapper>
