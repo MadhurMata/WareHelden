@@ -26,7 +26,7 @@ const Container = styled.div`
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
   padding: 0.6em;
-  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+  @media screen and (max-width: ${props => props.theme.responsive.medium}) {
     padding: 0;
   }
 `
@@ -48,7 +48,7 @@ const Title = styled.div`
     font-weight: 700;
     margin: 0;
   }
-  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+  @media screen and (max-width: ${props => props.theme.responsive.medium}) {
     width: auto;
     padding: 0;
     margin: 1rem 0;
@@ -87,7 +87,7 @@ const Item = styled.li`
   margin: 0 0.8rem;
   padding: 0.25em 0;
   width: 100%;
-  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+  @media screen and (max-width: ${props => props.theme.responsive.medium}) {
     width: auto;
     margin: 0 0.3rem;
   }
@@ -99,7 +99,7 @@ const Item = styled.li`
     &:hover {
       color: #fff;
     }
-  }
+  }xxx
 `
 
 const Header = ({ path }) => {
