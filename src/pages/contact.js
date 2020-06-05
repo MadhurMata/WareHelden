@@ -17,7 +17,7 @@ const Contact = () =>{
 
   return(
     <Layout>
-    <SEO title="Contact" description="Contact description goes here" />
+    <SEO title="Contact" description="Leave your message here" />
     <Container>
       <PageTitle>All your words are very welcome. Feel free to share your comments, ideas, questions, tips, and feelings</PageTitle>
       <ContactForm />

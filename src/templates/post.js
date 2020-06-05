@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import PostLinks from '../components/PostLinks'
 
 import SEO from '../components/SEO'
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -29,8 +30,8 @@ const PostTemplate = ({ data, pageContext }) => {
     <Layout>
       <SEO
         title={title}
-        description={data.contentfulPost.mainText}
-       image={ogImage}
+        description={data.contentfulPost.mainText.json.content[0].content[0].value}
+        image={ogImage}
       />
      
       <Hero title={title} image={image} display={'flex'} justify-content={'center'} date={publicationDate} body={data.contentfulPost.mainText}/>

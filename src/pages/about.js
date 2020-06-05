@@ -50,17 +50,6 @@ const FirstParagraph = styled.div`
 const About = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
-      about: allFile(
-        filter: { relativePath: {}, relativeDirectory: { eq: "about" } }
-      ) {
-        nodes {
-          childImageSharp {
-            fluid(maxWidth: 400) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
       allContentfulAbout {
         edges {
           node {
