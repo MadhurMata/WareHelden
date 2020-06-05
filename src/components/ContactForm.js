@@ -161,11 +161,11 @@ class ContactForm extends React.Component {
         overlay={this.state.showModal}
         onClick={this.closeModal}
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" aria-label="Save" name="form-name" value="contact" />
         <p hidden>
           <label>
             Don’t fill this out:{' '}
-            <input name="bot" onChange={this.handleInputChange} />
+            <input aria-label="Save" name="bot" onChange={this.handleInputChange} />
           </label>
         </p>
 

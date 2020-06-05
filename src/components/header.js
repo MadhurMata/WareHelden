@@ -55,7 +55,6 @@ const Title = styled.div`
   @media screen and (max-width: ${props => props.theme.responsive.medium}) {
     width: auto;
     padding: 0;
-    margin: 1rem 0;
     h1 {
       font-size: 2.5rem;
     }
@@ -130,10 +129,12 @@ const Header = ({ path }) => {
       }
     }
   `)
+  const titleMargin = path === '/about' ? "1rem" : "1.75rem";
+
   return (
     <StickyWrapper>
       <Wrapper>
-        <Title>
+        <Title style={{ margin: titleMargin }}>
           <Link to="/">
             { path === '/about' ? <h3>THE STORY OF</h3> : null }
             <h1>WARE HELDEN</h1>

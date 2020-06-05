@@ -5,16 +5,6 @@ import styled from "@emotion/styled"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Container from "./Container"
 
-const Div = styled.div`
-  font-family: 'Source Code Pro',cursive;
-  font-size: 0.9rem;
-  font-weight: 400;
-  padding: 2rem 0 3rem;
-  @media screen and (max-width: 480px) {
-    margin: 0 2%;
-  }
-  `
-
 const Wrapper = styled.div`
   float: left;
   width: 40%;
