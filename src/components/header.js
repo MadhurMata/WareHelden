@@ -11,6 +11,10 @@ const StickyWrapper = styled.div`
   top: 0;
   z-index: 999;
   background-color: white;
+  @media screen and (max-width: ${props => props.theme.responsive.medium}) {
+    padding: 0;
+    position: inherit;
+  }
 `
 const Wrapper = styled.header`
   display: flex;
