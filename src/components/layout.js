@@ -4,7 +4,6 @@ import { Global } from '@emotion/core'
 
 import Header from "./header"
 
-import "./layout.css"
 import { globalStyles } from '../styles/globalStyles'
 
 const Layout = ({ children, pathUrl }) => {
@@ -12,8 +11,6 @@ const Layout = ({ children, pathUrl }) => {
    <div
    style={{
      margin: `0 auto`,
-     maxWidth: 960,
-     padding: `0 1.0875rem 1.45rem`,
     }}
     >
       <Header path={pathUrl}/>

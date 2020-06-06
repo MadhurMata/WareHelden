@@ -21,7 +21,6 @@ const Wrapper = styled.header`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: ${props => props.theme.sizes.maxWidth};
 `
 const Container = styled.div`
   display: flex;
@@ -29,9 +28,10 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.secondary};
-  padding: 0.6em;
+  padding: 0.6rem 3rem;
+ 
   @media screen and (max-width: ${props => props.theme.responsive.medium}) {
-    padding: 0;
+    padding: 0.6rem 1rem;
   }
 `
 
@@ -39,12 +39,14 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
-  margin: 2rem 0;
+  height: 23vh;
+  align-items: center;
+  background-color: #d9b344;
+  box-shadow: 0 4px 2px -2px gray;
   a {
     text-decoration: none;
     color: black;
+    margin: 0;
   }
   h3 {
     font-family: "Amatic SC", cursive;
@@ -129,12 +131,11 @@ const Header = ({ path }) => {
       }
     }
   `)
-  const titleMargin = path === '/about' ? "1rem" : "1.75rem";
 
   return (
     <StickyWrapper>
       <Wrapper>
-        <Title style={{ margin: titleMargin }}>
+        <Title>
           <Link to="/">
             { path === '/about' ? <h3>THE STORY OF</h3> : null }
             <h1>WARE HELDEN</h1>
@@ -175,16 +176,16 @@ const Header = ({ path }) => {
           </NavBar>
           <ListMedia>
             <Item>
-              <a href="https://www.instagram.com/warehelden/">
+              <a href="https://www.facebook.com/warehelden">
                 <Img
                   className="icon"
                   fixed={data.icons.nodes[0].childImageSharp.fixed}
-                  alt="social-media-instagram"
+                  alt="social-media-facebook"
                 />
               </a>
             </Item>
             <Item>
-              <a href="https://www.facebook.com/warehelden">
+              <a href="https://www.instagram.com/warehelden/">
                 <Img
                   className="icon"
                   fixed={data.icons.nodes[1].childImageSharp.fixed}

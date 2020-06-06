@@ -33,7 +33,6 @@ const PostTemplate = ({ data, pageContext }) => {
         description={data.contentfulPost.mainText.json.content[0].content[0].value}
         image={ogImage}
       />
-     
       <Hero title={title} image={image} display={'flex'} justify-content={'center'} date={publicationDate} body={data.contentfulPost.mainText}/>
       <PostLinks previous={previous} next={next} basePath={basePath} />
     </Layout>

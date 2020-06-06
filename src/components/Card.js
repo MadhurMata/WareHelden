@@ -9,7 +9,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const Post = styled.li`
   position: relative;
   border: 1px solid ${props => props.theme.colors.secondary};
-  border-radius: 2px;
+  border-radius: 10px;
   margin: 0 0 1em 0;
   width: 100%;
   transition: background 0.2s;
@@ -41,8 +41,8 @@ const Post = styled.li`
 `
 
 const StyledImg = styled(Img)`
-  border-top-left-radius: 1px;
-  border-top-right-radius: 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `
 
 const Title = styled.h2`
@@ -51,8 +51,6 @@ const Title = styled.h2`
   font-family: 'Amatic SC', cursive;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ec6464;
-
 `
 
 const Date = styled.h4`
