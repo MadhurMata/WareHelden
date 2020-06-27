@@ -5,7 +5,6 @@ import Hero from '../components/Hero'
 import PostLinks from '../components/PostLinks'
 
 import SEO from '../components/SEO'
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const PostTemplate = ({ data, pageContext }) => {
   const {

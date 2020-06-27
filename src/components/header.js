@@ -87,7 +87,6 @@ const NavBar = styled.ul`
 const Item = styled.li`
   list-style: none;
   font-family: "Source Code Pro", cursive;
-  font-size: 0.9rem;
   text-align: justify;
   margin: 0 0.8rem;
   padding: 0.25em 0;
@@ -96,15 +95,6 @@ const Item = styled.li`
     width: auto;
     margin: 0 0.3rem;
   }
-  a {
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.2s;
-    color: #999999;
-    &:hover {
-      color: #fff;
-    }
-  }xxx
 `
 
 const Header = ({ path }) => {
@@ -147,7 +137,6 @@ const Header = ({ path }) => {
               <Link
                 activeStyle={{ color: "#333333" }}
                 className="btn btn--stripe"
-                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
                 to="/"
               >
                 Blog
@@ -157,7 +146,6 @@ const Header = ({ path }) => {
               <Link
                 activeStyle={{ color: "#333333" }}
                 className="btn btn--stripe"
-                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
                 to="/about"
               >
                 About
@@ -167,7 +155,6 @@ const Header = ({ path }) => {
               <Link
                 activeStyle={{ color: "#333333" }}
                 className="btn btn--stripe"
-                style={{ fontSize: "0.8rem", padding: "0.2rem 0.9rem 0.7rem" }}
                 to="/contact"
               >
                 Contact

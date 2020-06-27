@@ -13,13 +13,11 @@ const Wrapper = styled.div`
   border: 1px solid #aaa;
   padding: 1rem 1rem 1rem;
   margin-right: 2rem;
-  margin-bottom: 1rem;
   border-radius: 10px;
   @media screen and (max-width: ${props => props.theme.responsive.small}) { 
     float: none;
     margin: 0;
     width: 80%;
-    margin-bottom: 1rem;
   }
 `
 
@@ -40,7 +38,7 @@ const Date = styled.p`
 `
 
 const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
   padding: 0.5rem 0 1rem;
   @media screen and (max-width: ${props => props.theme.responsive.small}) { 
@@ -48,8 +46,8 @@ const Title = styled.h1`
   }
 `
 
-const FirstParagraph = styled.p`
-  line-height: 1.6;   
+const FirstParagraph = styled.div`
+  line-height: 1.6;
   font-family: 'Source Code Pro',cursive;
   font-size: 0.9rem;
   font-weight: 400;
@@ -58,11 +56,14 @@ const FirstParagraph = styled.p`
   @media screen and (max-width: ${props => props.theme.responsive.small}) { 
     display: block;
   }
+  p {
+    padding: 0.5rem 0;
+  }
 `
 
 const Hero = props => (
   <Container>
-      <Wrapper /*height={props.height}*/>
+      <Wrapper>
         <BgImg fluid={props.image.fluid} backgroundColor={"#eeeeee"} />
         <Date>{props.date}</Date>
       </Wrapper>

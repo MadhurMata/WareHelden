@@ -11,10 +11,6 @@ const Wrapper = styled.div`
   margin: -1.5rem auto 2.5rem;
   max-width: ${props => props.theme.sizes.maxWidth};
   padding: 0 1.5rem;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
 `
 
 const Numbers = styled.div`
@@ -23,10 +19,11 @@ const Numbers = styled.div`
   display: inline-block;
   float: left;
   color: ${props => props.theme.colors.text};
-  padding: 1rem;
+  padding: 0.64rem;
   background: white;
   position: relative;
   transition: 0.3s all;
+  font-size: 0.8rem;
   svg {
     fill: ${props => props.theme.colors.text};
     margin: 0 0 0 0.25rem;
@@ -38,13 +35,10 @@ const Numbers = styled.div`
   @media (hover: none) {
     background: white !important;
   }
-    @media screen and (max-width: ${props => props.theme.responsive.small}) { 
-    padding: 0.74rem;
-  }
 `
 
 const Select = styled.select`
-  font-size: 1rem;
+    font-size: 0.8rem;
   background: none;
   border: 2px solid #666;
   border-radius: 6px;
@@ -61,6 +55,14 @@ const Select = styled.select`
   }
 `
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  }
+`
+
+
+
 const Pagination = props => {
 
   function changePage(e) {
@@ -76,37 +78,41 @@ const Pagination = props => {
     <>
       {props.context.numberOfPages > 1 && (
         <Wrapper>
-          <Numbers>
-            {props.context.humanPageNumber}{' '}
-            <Select
-              value={
-                props.context.humanPageNumber === 1
-                  ? ``
-                  : props.context.humanPageNumber
-              }
-              onChange={changePage}
-            >
-              {Array.from({ length: props.context.numberOfPages }, (_, i) => (
-                <option value={`${i === 0 ? `` : i + 1}`} key={`page${i + 1}`}>
-                  {i + 1}
-                </option>
-              ))}
-            </Select>
-            / {props.context.numberOfPages}
-            <SelectIcon />
-          </Numbers>
-          <div>
-            {props.context.previousPagePath && (
-              <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.previousPagePath}`}>
-                <span>&larr;</span> Prev
-              </Link>
-            )}
-            {props.context.nextPagePath && (
-              <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.nextPagePath}`}>
-                Next <span>&rarr;</span>
-              </Link>
-            )}
-          </div>
+          <ButtonsContainer>
+            <div>
+              {props.context.previousPagePath && (
+                <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.previousPagePath}`}>
+                  <span>&larr;</span> Prev
+                </Link>
+              )}
+            </div>
+            <Numbers>
+              {props.context.humanPageNumber}{' '}
+              <Select
+                value={
+                  props.context.humanPageNumber === 1
+                    ? ``
+                    : props.context.humanPageNumber
+                }
+                onChange={changePage}
+              >
+                {Array.from({ length: props.context.numberOfPages }, (_, i) => (
+                  <option value={`${i === 0 ? `` : i + 1}`} key={`page${i + 1}`}>
+                    {i + 1}
+                  </option>
+                ))}
+              </Select>
+              / {props.context.numberOfPages}
+              <SelectIcon />
+            </Numbers>
+            <div>
+              {props.context.nextPagePath && (
+                <Link className="btn btn--stripe" style={{ order: 3 }} to={`/${props.context.nextPagePath}`}>
+                  Next <span>&rarr;</span>
+                </Link>
+              )}
+            </div>
+          </ButtonsContainer>
         </Wrapper>
       )}
     </>

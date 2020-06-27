@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `Ware Helden`,
-    description: `This platform aims to contribute to opening shame in whatever form it may be, to be together able to find the true hero in ourselves and be able to hold on to this.`,
-    keywords: `blog, shame, ware helden`,
+    description: `Ware Helden is a platform that aims to contribute to the breaking through of shame`,
+    keywords: `blog, shame, Ware Helden`,
     author: `Esmee Buitenhuis`,
-    siteUrl: 'https://ware-helden.com/',
+    siteUrl: 'https://ware-helden.com',
     image: ``,
     postsPerFirstPage: 4,
     postsPerPage: 6,
