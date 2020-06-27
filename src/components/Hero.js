@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   height: auto;
   box-shadow: 0 2px 10px #aaa;
   border: 1px solid #aaa;
-  padding: 1rem 1rem 1rem;
+  padding: 1rem 1rem 0;
   margin-right: 2rem;
   border-radius: 10px;
   @media screen and (max-width: ${props => props.theme.responsive.small}) { 

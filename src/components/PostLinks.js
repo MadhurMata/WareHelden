@@ -5,10 +5,10 @@ import { Link } from 'gatsby'
 import "../styles/Buttons.scss"
 
 const Wrapper = styled.div`
-  margin: 0 auto auto;
+  margin: 0 auto 2.5rem;
   width: 100%;
   max-width: 1050px;
-  padding: 1em 1.5em 1em;
+  padding: 0 1.5em 1em;
   max-width: ${props => props.theme.sizes.maxWidth};
 `
 
