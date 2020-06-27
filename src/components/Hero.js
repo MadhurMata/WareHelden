@@ -11,12 +11,13 @@ const Wrapper = styled.div`
   height: auto;
   box-shadow: 0 2px 10px #aaa;
   border: 1px solid #aaa;
-  padding: 1rem 1rem 0;
+  padding: 1rem 1rem 1rem;
   margin-right: 2rem;
+  margin-bottom: 1rem;
   border-radius: 10px;
   @media screen and (max-width: ${props => props.theme.responsive.small}) { 
     float: none;
-    margin: 0;
+    margin: 0 0 1rem 0;
     width: 80%;
   }
 `
